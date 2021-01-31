@@ -21,11 +21,11 @@ function glmd_form() {
 	<div class="glmd-wrap" style="text-align: center;">
 		<div class="glmd-input">
 			<div style="margin-bottom: 15px;">or</div>
-			<input name="url" type="url" id="glmd-url" placeholder="Image Link..." style="min-width: 300px;">
+			<input name="url" type="url" id="glmd-url" placeholder="<?php _e( 'Image Link...', 'glmd' ); ?>" style="min-width: 300px;">
 		</div>
 		<div class="glmd-submit" style="margin-top: 15px;">
 			<input type="hidden" name="glmd_nonce" value="<?php echo wp_create_nonce( 'glmd' ); ?>">
-			<button type="button" id="glmd-submit-btn" class="button button-primary">Download & Add to Media</button>
+			<button type="button" id="glmd-submit-btn" class="button button-primary"><?php _e( 'Download & Add to Media', 'glmd' ); ?></button>
 			<div id="glmd-message" style="max-width: 300px; margin: 15px auto 0;"></div>
 		</div>
 	</div>
@@ -37,7 +37,7 @@ function glmd_form() {
 			
 			var urlInput = document.getElementById( 'glmd-url' );
 			if ( urlInput.value.length == 0 ) {
-				alert( 'Please add a valid image link' );
+				alert( <?php _e( 'Please add a valid image link', 'glmd' ); ?> );
 				return false;
 			}
 			
@@ -95,11 +95,11 @@ add_action( 'post-plupload-upload-ui', 'glmd_form' );
 function glmd_action() {
 	if ( isset( $_POST['glmd_nonce'] ) ) {
 		if ( ! wp_verify_nonce( $_POST['glmd_nonce'], 'glmd' ) ) {
-			wp_send_json_error( 'You don\'t have permission to upload image' );
+			wp_send_json_error( __( 'You don\'t have permission to upload image', 'glmd' ) );
 			wp_die();
 		}
 	} else {
-		wp_send_json_error( 'No nonce found!' );
+		wp_send_json_error( __( 'No nonce found!', 'glmd' ) );
 		wp_die();
 	}
 	
@@ -108,10 +108,10 @@ function glmd_action() {
 		if ( is_wp_error( $image ) ) {
 			wp_send_json_error( $image->get_error_message() );
 		} else {
-			wp_send_json( array( 'success' => true, 'data' => 'Upload Successful.', 'image' => $image ) );
+			wp_send_json( array( 'success' => true, 'data' => __( 'Upload Successful.', 'glmd' ), 'image' => $image ) );
 		}
 	} else {
-		wp_send_json_error( 'No link found!' );
+		wp_send_json_error( __( 'No link found!', 'glmd' ) );
 	}
 	
 	wp_die();
