@@ -37,7 +37,7 @@ function glmd_form() {
 			
 			var urlInput = document.getElementById( 'glmd-url' );
 			if ( urlInput.value.length == 0 ) {
-				alert( <?php _e( 'Please add a valid image link', 'glmd' ); ?> );
+				alert( '<?php _e( 'Please add a valid image link', 'glmd' ); ?>' );
 				return false;
 			}
 			
