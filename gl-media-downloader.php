@@ -30,9 +30,7 @@ function glmd_form() {
 		</div>
 	</div>
 	<script>
-		var formButton = document.getElementById( 'glmd-submit-btn' );
-		
-		formButton.addEventListener( 'click', function ( event ) {
+		document.getElementById( 'glmd-submit-btn' ).addEventListener( 'click', function ( event ) {
 			event.preventDefault();
 			
 			var urlInput = document.getElementById( 'glmd-url' );
@@ -90,7 +88,7 @@ function glmd_form() {
 	<?php
 }
 
-add_action( 'post-plupload-upload-ui', 'glmd_form' );
+add_action( 'post-upload-ui', 'glmd_form' );
 
 function glmd_action() {
 	if ( isset( $_POST['glmd_nonce'] ) ) {
