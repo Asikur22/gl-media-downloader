@@ -1,7 +1,7 @@
 # GL Media Downloader
  * Plugin Name:       GL Media Downloader
  * Plugin URI:        http://greenlifeit.com/plugins
- * Description:       A WordPress plugin to download and insert image to WP Media.
+ * Description:       A WordPress plugin to download and insert image to WP Media from URL.
  * Version:           1.0.0
  * Author:            Asiqur Rahman
  * Author URI:        https://asique.net/
